@@ -1,16 +1,16 @@
 # Liste des cinémas indépendants du Quartier latin
-# Version 1
+# Version 2
 
 CINEMAS = [
     {
         "nom": "Le Champo",
         "ville": "Paris",
-        "url": "https://www.lechampo.com"
+        "url": "https://www.cinema-lechampo.com/films/horaires.html"
     },
     {
         "nom": "Christine Cinéma Club",
         "ville": "Paris",
-        "url": "https://www.christinecinemaclub.fr"
+        "url": "https://pariscinemaclub.com/programmation-et-horaires/"
     },
     {
         "nom": "Le Grand Action",
@@ -20,7 +20,7 @@ CINEMAS = [
     {
         "nom": "L'Épée de Bois",
         "ville": "Paris",
-        "url": "https://www.letheatredepoche.com"
+        "url": "https://www.cine-epeedebois.fr/horaires/"
     },
     {
         "nom": "Reflet Médicis",
