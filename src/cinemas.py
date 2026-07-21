@@ -1,11 +1,11 @@
 # Liste des cinémas indépendants du Quartier latin
-# Version 2
+# Version 3
 
 CINEMAS = [
     {
         "nom": "Le Champo",
         "ville": "Paris",
-        "url": "https://www.cinema-lechampo.com/films/horaires.html"
+        "url": "https://www.cinema-lechampo.com"
     },
     {
         "nom": "Christine Cinéma Club",
