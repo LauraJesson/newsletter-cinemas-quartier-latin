@@ -13,6 +13,8 @@ def main():
 
     html = generer_newsletter(programmes)
 
+    print(html[:1000])
+
     print("✉️ Envoi de la newsletter")
 
     envoyer_newsletter(html)
