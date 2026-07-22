@@ -8,6 +8,7 @@ HEADERS = {
         "Mozilla/5.0 "
         "(Windows NT 10.0; Win64; x64) "
         "AppleWebKit/537.36 "
+        "(KHTML, like Gecko) "
         "Chrome/120 Safari/537.36"
     )
 }
@@ -15,8 +16,8 @@ HEADERS = {
 
 def extraire_texte_page(url):
     """
-    Récupération simple d'une page HTML.
-    Sera remplacée par des extracteurs spécifiques cinéma par cinéma.
+    Récupération simple du contenu HTML d'une page.
+    Sera remplacée ensuite par des extracteurs spécifiques.
     """
 
     response = requests.get(
@@ -27,19 +28,24 @@ def extraire_texte_page(url):
 
     response.raise_for_status()
 
-    soup = BeautifulSoup(response.text, "lxml")
+    soup = BeautifulSoup(
+        response.text,
+        "lxml"
+    )
 
-    texte = soup.get_text(" ", strip=True)
-
-    return texte[:2000]
+    return soup.get_text(
+        " ",
+        strip=True
+    )[:2000]
 
 
 def recuperer_programme(cinema):
     """
-    Lance la récupération pour un cinéma.
+    Récupère le programme d'un cinéma.
     """
 
-    print(f"🎬 Récupération : {cinema['nom']}")
+    print("Récupération :", cinema["nom"])
+    print("URL utilisée :", cinema["url"])
 
     try:
 
@@ -58,7 +64,10 @@ def recuperer_programme(cinema):
 
         return {
             "cinema": cinema["nom"],
-            "erreur": "Erreur certificat SSL : " + str(e)
+            "erreur": (
+                "Erreur certificat SSL : "
+                + str(e)
+            )
         }
 
 
@@ -66,7 +75,10 @@ def recuperer_programme(cinema):
 
         return {
             "cinema": cinema["nom"],
-            "erreur": "Le site ne répond pas (timeout)"
+            "erreur": (
+                "Le site ne répond pas "
+                "(timeout)"
+            )
         }
 
 
@@ -83,12 +95,17 @@ def recuperer_tous_les_programmes():
 
     programmes = []
 
+    print("Nombre de cinémas :", len(CINEMAS))
+
     for cinema in CINEMAS:
 
-        programme = recuperer_programme(cinema)
+        programme = recuperer_programme(
+            cinema
+        )
 
-        programmes.append(programme)
-
+        programmes.append(
+            programme
+        )
 
     return programmes
 
@@ -101,10 +118,20 @@ if __name__ == "__main__":
     for resultat in resultats:
 
         print("\n----------------")
-        print(resultat["cinema"])
+
+        print(
+            resultat["cinema"]
+        )
 
         if "erreur" in resultat:
-            print("❌", resultat["erreur"])
+
+            print(
+                "ERREUR :",
+                resultat["erreur"]
+            )
 
         else:
-            print(resultat["contenu"][:500])
+
+            print(
+                resultat["contenu"][:500]
+            )
