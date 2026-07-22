@@ -9,8 +9,11 @@ def main():
 
     programmes = recuperer_tous_les_programmes()
 
-for p in programmes:
-    print(p.get("cinema"), p.get("url"))
+    for p in programmes:
+        print(
+            p.get("cinema"),
+            p.get("url")
+        )
 
     print("📝 Création de la newsletter")
 
