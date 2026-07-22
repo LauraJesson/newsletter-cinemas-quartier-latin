@@ -9,6 +9,8 @@ def main():
 
     programmes = recuperer_tous_les_programmes()
 
+    print("===== PROGRAMMES RÉCUPÉRÉS =====")
+
     for p in programmes:
         print(
             p.get("cinema"),
@@ -18,8 +20,6 @@ def main():
     print("📝 Création de la newsletter")
 
     html = generer_newsletter(programmes)
-
-    print(html[:1000])
 
     print("✉️ Envoi de la newsletter")
 
