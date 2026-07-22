@@ -10,7 +10,7 @@ def recuperer_programme(cinema):
     chaque cinéma pourra ensuite avoir son extracteur spécifique.
     """
 
-    print(f"Récupération : {cinema['nom']}")
+   print(f"Récupération : {cinema['nom']} -> {cinema['url']}")
 
     try:
         response = requests.get(
